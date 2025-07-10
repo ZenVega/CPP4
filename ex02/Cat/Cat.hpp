@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uschmidt <uschmidt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:14:15 by uschmidt          #+#    #+#             */
-/*   Updated: 2025/07/10 14:00:29 by uschmidt         ###   ########.fr       */
+/*   Updated: 2025/07/10 12:03:28 by uschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef CAT_HPP
+#define CAT_HPP
 
-#include "../Brain/Brain.hpp"
+#include "../Animal/Animal.hpp"
 #include "../includes/CONSTANTS.hpp"
 
-class Animal
+class Cat : public virtual Animal
 {
 protected:
-	string _type;
-	Brain *_ideas;
-
 public:
-	Animal();
-	Animal(string name);
-	Animal(const Animal &other);
-	virtual ~Animal();
+	Cat();
+	Cat(string name);
+	Cat(const Cat &other);
+	~Cat();
 
+	Cat &operator=(const Cat &other);
 	void setType(string type);
-	// const in this example is also necessary to make in callable on a const Animal
-	string		 getType(void) const;
-	virtual void makeSound(void) const;
-	Animal		&operator=(const Animal &other);
 };
 
 #endif

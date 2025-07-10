@@ -6,7 +6,7 @@
 /*   By: uschmidt <uschmidt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:14:15 by uschmidt          #+#    #+#             */
-/*   Updated: 2025/07/10 14:00:29 by uschmidt         ###   ########.fr       */
+/*   Updated: 2025/07/10 14:03:44 by uschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ class Animal
 protected:
 	string _type;
 	Brain *_ideas;
-
-public:
+	// making constructors protected prevents  base class object creation
 	Animal();
 	Animal(string name);
 	Animal(const Animal &other);
-	virtual ~Animal();
 
+public:
+	virtual ~Animal();
 	void setType(string type);
 	// const in this example is also necessary to make in callable on a const Animal
 	string		 getType(void) const;
