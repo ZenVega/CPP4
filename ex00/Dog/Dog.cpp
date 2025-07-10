@@ -1,72 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uschmidt <uschmidt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 09:08:50 by uschmidt          #+#    #+#             */
-/*   Updated: 2025/07/10 09:30:14 by uschmidt         ###   ########.fr       */
+/*   Updated: 2025/07/10 12:18:53 by uschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ScavTrap.hpp"
+#include "Dog.hpp"
 
-ScavTrap::ScavTrap() :
-	ClapTrap("default trap")
+Dog::Dog() :
+	Animal("Dog")
 {
-	cout << "ScavTrap: " << _name << " created" << endl;
-	ClapTrap::setStats(100, 50, 20);
+	cout << "Dog of type: " << _type << " created" << endl;
 };
 
-ScavTrap::ScavTrap(string name) :
-	ClapTrap(name)
+Dog::Dog(string type) :
+	Animal(type)
 {
-	cout << "ScavTrap: " << _name << " created" << endl;
-	ClapTrap::setStats(100, 50, 20);
+	cout << "Dog of type: " << _type << " created" << endl;
 };
 
-ScavTrap::ScavTrap(const ScavTrap &other) :
-	ClapTrap(other._name)
+void Dog::setType(string type)
 {
-	if (this != &other)
-	{
-		_hitPoints	  = other._hitPoints;
-		_energyPoints = other._energyPoints;
-		_attackDamage = other._attackDamage;
-	}
-	cout << "ScavTrap: " << _name << " created from copy constructor" << endl;
-};
-
-ScavTrap &ScavTrap::operator=(const ScavTrap &other)
-{
-	if (this != &other)
-	{
-		_name		  = other._name;
-		_hitPoints	  = other._hitPoints;
-		_energyPoints = other._energyPoints;
-		_attackDamage = other._attackDamage;
-	}
-	return *this;
+	cout << "Dog of type: " << _type << " set to type: ";
+	_type = type;
+	cout << _type << endl;
 }
 
-ScavTrap::~ScavTrap()
+Dog::Dog(const Dog &other) :
+	Animal(other._type)
 {
-	cout << "ScavTrap: " << _name << " destroyed" << endl;
-};
-
-void ScavTrap::attack(const string &target)
-{
-	if (_energyPoints > 0 && _hitPoints > 0)
+	if (this != &other)
 	{
-		_energyPoints--;
-		cout << "ScavTrap " << _name << " attacks " << target;
-		cout << ", causing " << _attackDamage << " points of damage!" << endl;
+		_type = other._type;
 	}
-	else
-		cout << "ScavTrap: " << _name << " out of energy or hitPoints" << endl;
+	cout << "Dog of type: " << _type << " created from copy constructor" << endl;
 };
 
-void ScavTrap::guardGate(void)
+Dog::~Dog()
 {
-	cout << "ScavTrap: " << _name << " now in Gate Keeper Mode" << endl;
+	cout << "Dog of type: " << _type << " destroyed" << endl;
+};
+
+Dog &Dog::operator=(const Dog &other)
+{
+	if (this != &other)
+	{
+		this->_type = other._type;
+	}
+	return *this;
 };

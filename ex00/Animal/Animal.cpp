@@ -1,104 +1,69 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uschmidt <uschmidt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 09:08:50 by uschmidt          #+#    #+#             */
-/*   Updated: 2025/07/10 09:36:15 by uschmidt         ###   ########.fr       */
+/*   Updated: 2025/07/10 12:15:06 by uschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ClapTrap.hpp"
+#include "Animal.hpp"
 
-ClapTrap::ClapTrap() :
-	_name("default trap"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
+Animal::Animal() :
+	_type("undefined animal")
 {
-	cout << "ClapTrap: " << _name << " created" << endl;
+	cout << "Animal of type: " << _type << " created" << endl;
 };
 
-ClapTrap::ClapTrap(string name) :
-	_name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
+Animal::Animal(string type) :
+	_type(type)
 {
-	cout << "ClapTrap: " << _name << " created" << endl;
+	cout << "Animal of type: " << _type << " created" << endl;
 };
 
-void ClapTrap::setStats(unsigned int hitPoints, unsigned int energyPoints, unsigned int attackDamage)
+void Animal::setType(string type)
 {
-	_hitPoints	  = hitPoints;
-	_energyPoints = energyPoints;
-	_attackDamage = attackDamage;
-	cout << "Overwriting " << _name << "'s stats" << endl;
+	cout << "Animal of type: " << _type << " set to type: ";
+	_type = type;
+	cout << _type << endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap &other)
+string Animal::getType(void) const
+{
+	return _type;
+}
+
+Animal::Animal(const Animal &other)
 {
 	if (this != &other)
 	{
-		_name		  = other._name;
-		_hitPoints	  = other._hitPoints;
-		_energyPoints = other._energyPoints;
-		_attackDamage = other._attackDamage;
+		_type = other._type;
 	}
-	cout << "ClapTrap: " << _name << " created from copy constructor" << endl;
+	cout << "Animal of type: " << _type << " created from copy constructor" << endl;
 };
 
-ClapTrap::~ClapTrap()
+Animal::~Animal()
 {
-	cout << "ClapTrap: " << _name << " destroyed" << endl;
+	cout << "Animal of type: " << _type << " destroyed" << endl;
 };
 
-ClapTrap &ClapTrap::operator=(const ClapTrap &other)
+Animal &Animal::operator=(const Animal &other)
 {
 	if (this != &other)
 	{
-		this->_name			= other._name;
-		this->_hitPoints	= other._hitPoints;
-		this->_energyPoints = other._energyPoints;
-		this->_attackDamage = other._attackDamage;
+		this->_type = other._type;
 	}
 	return *this;
 };
 
-void ClapTrap::attack(const string &target)
+void Animal::makeSound(void) const
 {
-	if (_energyPoints > 0 && _hitPoints > 0)
-	{
-		_energyPoints--;
-		cout << "ClapTrap " << _name << " attacks " << target;
-		cout << ", causing " << _attackDamage << " points of damage!" << endl;
-	}
+	if (_type == "Cat")
+		cout << "meow meow" << endl;
+	else if (_type == "Dog")
+		cout << "bark bark" << endl;
 	else
-		cout << "ClapTrap " << _name << " out of energy or hitPoints" << endl;
-};
-
-void ClapTrap::takeDamage(unsigned int amount)
-{
-	if (amount <= _hitPoints)
-	{
-		_hitPoints -= amount;
-		cout << _name << " looses " << amount << " hitPoints." << endl;
-	}
-	else
-	{
-		cout << _name << " looses " << _hitPoints << " hitPoints." << endl;
-		_hitPoints = 0;
-	}
-	cout << _name << " has " << _hitPoints << " hitPoints left." << endl;
-};
-
-void ClapTrap::beRepaired(unsigned int amount)
-{
-	if (_energyPoints > 0)
-	{
-		_hitPoints += amount;
-		cout << _name << " getting repaired and regains " << amount << " hitPoints." << endl;
-	}
-	else
-		cout << "ClapTrap " << _name << " out of energy" << endl;
-};
-
-unsigned int ClapTrap::getAttackDamage(void)
-{
-	return _attackDamage;
+		cout << "unidentified Noises" << endl;
 }

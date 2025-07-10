@@ -6,27 +6,27 @@
 /*   By: uschmidt <uschmidt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:14:15 by uschmidt          #+#    #+#             */
-/*   Updated: 2025/07/10 10:02:42 by uschmidt         ###   ########.fr       */
+/*   Updated: 2025/07/10 12:03:28 by uschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-#define FRAGTRAP_HPP
+#ifndef CAT_HPP
+#define CAT_HPP
 
-#include "../ClapTrap/ClapTrap.hpp"
+#include "../Animal/Animal.hpp"
 #include "../includes/CONSTANTS.hpp"
 
-class FragTrap : public virtual ClapTrap
+class Cat : public virtual Animal
 {
 protected:
 public:
-	FragTrap();
-	FragTrap(string name);
-	FragTrap(const FragTrap &other);
-	~FragTrap();
+	Cat();
+	Cat(string name);
+	Cat(const Cat &other);
+	~Cat();
 
-	FragTrap &operator=(const FragTrap &other);
-	void	  highFivesGuys(void);
+	Cat &operator=(const Cat &other);
+	void setType(string type);
 };
 
 #endif

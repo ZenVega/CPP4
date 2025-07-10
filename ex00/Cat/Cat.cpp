@@ -1,60 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.cpp                                       :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uschmidt <uschmidt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 09:08:50 by uschmidt          #+#    #+#             */
-/*   Updated: 2025/07/10 09:30:32 by uschmidt         ###   ########.fr       */
+/*   Updated: 2025/07/10 12:18:04 by uschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "FragTrap.hpp"
 
-FragTrap::FragTrap() :
-	ClapTrap("default trap")
+#include "Cat.hpp"
+
+Cat::Cat() :
+	Animal("Cat")
 {
-	cout << "FragTrap: " << _name << " created" << endl;
-	ClapTrap::setStats(100, 100, 30);
+	cout << "Cat of type: " << _type << " created" << endl;
 };
 
-FragTrap::FragTrap(string name) :
-	ClapTrap(name)
+Cat::Cat(string type) :
+	Animal(type)
 {
-	cout << "FragTrap: " << _name << " created" << endl;
-	ClapTrap::setStats(100, 100, 30);
+	cout << "Cat of type: " << _type << " created" << endl;
 };
 
-FragTrap::FragTrap(const FragTrap &other) :
-	ClapTrap(other._name)
+void Cat::setType(string type)
 {
-	if (this != &other)
-	{
-		_hitPoints	  = other._hitPoints;
-		_energyPoints = other._energyPoints;
-		_attackDamage = other._attackDamage;
-	}
-	cout << "FragTrap: " << _name << " created from copy constructor" << endl;
-};
-
-FragTrap &FragTrap::operator=(const FragTrap &other)
-{
-	if (this != &other)
-	{
-		_name		  = other._name;
-		_hitPoints	  = other._hitPoints;
-		_energyPoints = other._energyPoints;
-		_attackDamage = other._attackDamage;
-	}
-	return *this;
+	cout << "Cat of type: " << _type << " set to type: ";
+	_type = type;
+	cout << _type << endl;
 }
 
-FragTrap::~FragTrap()
+Cat::Cat(const Cat &other) :
+	Animal(other._type)
+
 {
-	cout << "FragTrap: " << _name << " destroyed" << endl;
+	if (this != &other)
+	{
+		_type = other._type;
+	}
+	cout << "Cat of type: " << _type << " created from copy constructor" << endl;
 };
 
-void FragTrap::highFivesGuys(void)
+Cat::~Cat()
 {
-	cout << "FragTrap: " << _name << " hey hey, gimme five?!" << endl;
+	cout << "Cat of type: " << _type << " destroyed" << endl;
+};
+
+Cat &Cat::operator=(const Cat &other)
+{
+	if (this != &other)
+	{
+		this->_type = other._type;
+	}
+	return *this;
 };

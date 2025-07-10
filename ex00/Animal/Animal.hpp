@@ -1,40 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uschmidt <uschmidt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:14:15 by uschmidt          #+#    #+#             */
-/*   Updated: 2025/07/05 10:33:49 by uschmidt         ###   ########.fr       */
+/*   Updated: 2025/07/10 12:17:08 by uschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAP_HPP
-#define CLAPTRAP_HPP
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 
 #include "../includes/CONSTANTS.hpp"
 
-class ClapTrap
+class Animal
 {
 protected:
-	string		 _name;
-	unsigned int _hitPoints;
-	unsigned int _energyPoints;
-	unsigned int _attackDamage;
+	string _type;
 
 public:
-	ClapTrap();
-	ClapTrap(string name);
-	ClapTrap(const ClapTrap &other);
-	~ClapTrap();
+	Animal();
+	Animal(string name);
+	Animal(const Animal &other);
+	virtual ~Animal();
 
-	ClapTrap	&operator=(const ClapTrap &other);
-	void		 setStats(unsigned int hitPoints, unsigned int energyPoints, unsigned int attackDamage);
-	virtual void attack(const string &target);
-	void		 takeDamage(unsigned int amount);
-	void		 beRepaired(unsigned int amount);
-	unsigned int getAttackDamage(void);
+	void setType(string type);
+	// const in this example is also necessary to make in callable on a const Animal
+	string		 getType(void) const;
+	virtual void makeSound(void) const;
+	Animal		&operator=(const Animal &other);
 };
 
 #endif
