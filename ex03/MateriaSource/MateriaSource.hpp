@@ -6,7 +6,7 @@
 /*   By: uschmidt <uschmidt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:14:15 by uschmidt          #+#    #+#             */
-/*   Updated: 2025/07/15 12:06:26 by uschmidt         ###   ########.fr       */
+/*   Updated: 2025/07/15 12:41:48 by uschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 #include "../IMateriaSource/IMateriaSource.hpp"
 #include "../includes/CONSTANTS.hpp"
 
-class MateriaSource : IMateriaSource
+// has to be public inheritance to cast it to its base class
+class MateriaSource : public IMateriaSource
 {
 private:
 	AMateria *_recipes[RECIPE_SIZE];

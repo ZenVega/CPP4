@@ -6,7 +6,7 @@
 /*   By: uschmidt <uschmidt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:14:15 by uschmidt          #+#    #+#             */
-/*   Updated: 2025/07/15 11:28:00 by uschmidt         ###   ########.fr       */
+/*   Updated: 2025/07/15 12:42:01 by uschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "../AMateria/AMateria.hpp"
 #include "../includes/CONSTANTS.hpp"
 
-class Ice : AMateria
+class Ice : public AMateria
 {
 protected:
 public:

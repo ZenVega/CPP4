@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uschmidt <uschmidt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:14:15 by uschmidt          #+#    #+#             */
-/*   Updated: 2025/07/10 14:03:44 by uschmidt         ###   ########.fr       */
+/*   Updated: 2025/07/15 12:46:45 by uschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 class AMateria;
 
-class Character : ICharacter
+class Character : public ICharacter
 {
 private:
 	string	  _name;
@@ -35,7 +35,7 @@ public:
 	string const &getName() const;
 	void		  equip(AMateria *m);
 	void		  unequip(int idx);
-	void		  use(int idx, Character &target);
+	void		  use(int idx, ICharacter &target);
 };
 
 #endif

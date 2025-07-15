@@ -6,7 +6,7 @@
 /*   By: uschmidt <uschmidt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 16:28:22 by uschmidt          #+#    #+#             */
-/*   Updated: 2025/07/10 13:51:38 by uschmidt         ###   ########.fr       */
+/*   Updated: 2025/07/15 12:31:46 by uschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 
 #include "../AMateria/AMateria.hpp"
 #include "../Character/Character.hpp"
+#include "../Cure/Cure.hpp"
 #include "../ICharacter/ICharacter.hpp"
+#include "../IMateriaSource/IMateriaSource.hpp"
+#include "../Ice/Ice.hpp"
+#include "../MateriaSource/MateriaSource.hpp"
 #include "CONSTANTS.hpp"
 
 #endif
