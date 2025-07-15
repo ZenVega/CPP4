@@ -15,6 +15,7 @@
 #define RECIPE_SIZE 4
 #define MAX_CAP 1024
 
+#include "../AMateria/AMateria.hpp"
 #include "../Character/Character.hpp"
 #include "../IMateriaSource/IMateriaSource.hpp"
 #include "../includes/CONSTANTS.hpp"

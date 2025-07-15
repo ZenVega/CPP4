@@ -13,8 +13,10 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 
+#include "../AMateria/AMateria.hpp"
 #include "../ICharacter/ICharacter.hpp"
 #include "../includes/CONSTANTS.hpp"
+
 #define INVENTORY 4
 
 class AMateria;
@@ -23,7 +25,7 @@ class Character : public ICharacter
 {
 private:
 	string	  _name;
-	AMateria *inventory[INVENTORY];
+	AMateria *_inventory[INVENTORY];
 
 public:
 	Character();

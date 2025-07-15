@@ -13,9 +13,8 @@
 #ifndef ICHARACTER_HPP
 #define ICHARACTER_HPP
 
+#include "../AMateria/AMateria.hpp"
 #include "../includes/CONSTANTS.hpp"
-
-class AMateria;
 
 class ICharacter
 {

@@ -13,13 +13,13 @@
 #include "Cure.hpp"
 
 Cure::Cure() :
-	AMateria("ice")
+	AMateria("cure")
 {
 	cout << "Cure Materia created" << endl;
 };
 
 Cure::Cure(const Cure &other) :
-	AMateria("ice")
+	AMateria("cure")
 
 {
 	if (this != &other)
@@ -51,5 +51,5 @@ AMateria *Cure::clone(void) const
 
 void Cure::use(ICharacter &target)
 {
-	cout << "* shoots an ice bolt at " << target.getName() << " *" << endl;
+	cout << "* heals " << target.getName() << "’s wounds *" << endl;
 }

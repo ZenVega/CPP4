@@ -21,11 +21,10 @@ class AMateria
 {
 protected:
 	string _type;
-	bool   _equipped;
 
 public:
 	AMateria();
-	virtual ~AMateria();
+	virtual ~AMateria(){};
 	AMateria(std::string const &type);
 	AMateria(const AMateria &other);
 	AMateria &operator=(const AMateria &other);

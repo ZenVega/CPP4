@@ -6,7 +6,7 @@
 /*   By: uschmidt <uschmidt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 09:08:50 by uschmidt          #+#    #+#             */
-/*   Updated: 2025/07/15 13:20:56 by uschmidt         ###   ########.fr       */
+/*   Updated: 2025/07/15 14:52:22 by uschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Character.hpp"
@@ -14,12 +14,16 @@
 Character::Character() :
 	_name("undefined")
 {
+	for (int i = 0; i <= INVENTORY; i++)
+		_inventory[i] = NULL;
 	cout << "Character of name: " << _name << " created" << endl;
 };
 
 Character::Character(string name) :
 	_name(name)
 {
+	for (int i = 0; i <= INVENTORY; i++)
+		_inventory[i] = NULL;
 	cout << "Character of name: " << _name << " created" << endl;
 };
 
@@ -35,10 +39,10 @@ Character::Character(const Character &other)
 Character::~Character()
 {
 	for (int i = 0; i <= INVENTORY; i++)
-		if (inventory[i] != NULL)
+		if (_inventory[i] != NULL)
 		{
-			delete inventory[i];
-			inventory[i] = NULL;
+			delete _inventory[i];
+			_inventory[i] = NULL;
 		}
 	cout << "Characters " << _name << " died" << endl;
 };
@@ -60,22 +64,22 @@ string const &Character::getName(void) const
 void Character::equip(AMateria *m)
 {
 	for (int i = 0; i <= INVENTORY; i++)
-		if (inventory[i] == NULL)
+		if (_inventory[i] == NULL)
 		{
-			inventory[i] = m;
+			_inventory[i] = m;
 			cout << "Materia " << m->getType() << "equipped" << endl;
-			// logig to assign materia
+			// logic to assign materia
 			return;
 		}
-	cout << "No space in inventory. Unequip or use first!" << endl;
+	cout << "No space in _inventory. Unequip or use first!" << endl;
 };
 
 void Character::unequip(int idx)
 {
-	if (inventory[idx] != NULL)
+	if (_inventory[idx] != NULL)
 	{
-		cout << "Materia " << inventory[idx]->getType() << "dropped" << endl;
-		// logic to drop inventory
+		cout << "Materia " << _inventory[idx]->getType() << "dropped" << endl;
+		// logic to drop _inventory
 	}
 	else
 	{
@@ -83,4 +87,14 @@ void Character::unequip(int idx)
 	}
 };
 
-void Character::use(int idx, ICharacter &target){};
+void Character::use(int idx, ICharacter &target)
+{
+	if (_inventory[idx] != NULL)
+	{
+		_inventory[idx]->use(target);
+		delete _inventory[idx];
+		_inventory[idx] = NULL;
+	}
+	else
+		cout << "No Item in that slot" << endl;
+};

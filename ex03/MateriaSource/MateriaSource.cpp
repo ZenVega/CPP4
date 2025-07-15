@@ -66,7 +66,7 @@ void MateriaSource::learnMateria(AMateria *materia)
 		{
 			_recipes[i] = materia;
 			cout << "materia of type: " << materia->getType() << " learned." << endl;
-			break;
+			return;
 		}
 	}
 	cout << "No empty slots in recipes." << endl;

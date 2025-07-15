@@ -24,20 +24,16 @@ AMateria::AMateria(string const &type) :
 	cout << "AMateria of type: " << _type << " created" << endl;
 };
 
-AMateria::AMateria(const AMateria &other)
+AMateria::AMateria(const AMateria &other) :
+	_type(other._type)
 {
-	if (this != &other)
-	{
-		_type = other._type;
-	}
-	cout << "AMateria of name: " << _type << " created from copy constructor" << endl;
-};
-
-AMateria::~AMateria()
-{
-	cout << "AMateria of type: " << _type << " destroyed" << endl;
-};
-
+	std::cout << "AMateria copied" << std::endl;
+}
+// AMateria::~AMateria()
+// {
+// 	cout << "AMateria of type: " << _type << " destroyed" << endl;
+// };
+//
 AMateria &AMateria::operator=(const AMateria &other)
 {
 	if (this != &other)

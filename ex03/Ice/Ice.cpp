@@ -19,13 +19,8 @@ Ice::Ice() :
 };
 
 Ice::Ice(const Ice &other) :
-	AMateria("ice")
-
+	AMateria(other)
 {
-	if (this != &other)
-	{
-		_type = other._type;
-	}
 	cout << "Ice created from copy constructor" << endl;
 };
 
@@ -45,8 +40,7 @@ Ice &Ice::operator=(const Ice &other)
 
 AMateria *Ice::clone(void) const
 {
-	AMateria *clone = new Ice();
-	return clone;
+	return (new Ice(*this));
 };
 
 void Ice::use(ICharacter &target)
