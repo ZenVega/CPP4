@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uschmidt <uschmidt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:14:15 by uschmidt          #+#    #+#             */
-/*   Updated: 2025/07/10 14:03:44 by uschmidt         ###   ########.fr       */
+/*   Updated: 2025/07/15 11:28:00 by uschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ public:
 	Ice(const Ice &other);
 	Ice &operator=(const Ice &other);
 
-	virtual AMateria *clone() const;
-	virtual void	  use(ICharacter &target);
+	AMateria *clone() const;
+	void	  use(ICharacter &target);
 };
 
 #endif
