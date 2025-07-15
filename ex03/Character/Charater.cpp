@@ -6,7 +6,7 @@
 /*   By: uschmidt <uschmidt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 09:08:50 by uschmidt          #+#    #+#             */
-/*   Updated: 2025/07/15 12:46:52 by uschmidt         ###   ########.fr       */
+/*   Updated: 2025/07/15 12:50:59 by uschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Character.hpp"
@@ -35,8 +35,11 @@ Character::Character(const Character &other)
 Character::~Character()
 {
 	for (int i = 0; i <= INVENTORY; i++)
-		if (inventory[i])
+		if (inventory[i] != NULL)
+		{
 			delete (inventory[i]);
+			inventory[i] = NULL;
+		}
 	cout << "Characters " << _name << " died" << endl;
 };
 

@@ -25,7 +25,7 @@ protected:
 
 public:
 	AMateria();
-	~AMateria();
+	virtual ~AMateria();
 	AMateria(std::string const &type);
 	AMateria(const AMateria &other);
 	AMateria &operator=(const AMateria &other);

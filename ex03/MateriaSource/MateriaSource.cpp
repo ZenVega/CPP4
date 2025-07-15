@@ -6,7 +6,7 @@
 /*   By: uschmidt <uschmidt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 09:08:50 by uschmidt          #+#    #+#             */
-/*   Updated: 2025/07/15 12:25:20 by uschmidt         ###   ########.fr       */
+/*   Updated: 2025/07/15 13:10:15 by uschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 MateriaSource::MateriaSource()
 {
 	for (int i = 0; i < RECIPE_SIZE; i++)
-		_recipes[i++] = NULL;
+		_recipes[i] = NULL;
 	cout << "MateriaSource created" << endl;
 };
 
@@ -26,10 +26,7 @@ MateriaSource::MateriaSource(const MateriaSource &other)
 		for (int i = 0; i < RECIPE_SIZE; i++)
 		{
 			if (other._recipes[i] != NULL)
-			{
 				_recipes[i] = other._recipes[i];
-			}
-			i++;
 		}
 	}
 	cout << "MateriaSource created from copy constructor" << endl;
@@ -37,6 +34,14 @@ MateriaSource::MateriaSource(const MateriaSource &other)
 
 MateriaSource::~MateriaSource()
 {
+	for (int i = 0; i < MAX_CAP; i++)
+	{
+		if (_createdMateria[i] != NULL)
+		{
+			delete _createdMateria[i];
+			_createdMateria[i] = NULL;
+		}
+	}
 	cout << "MateriaSource destroyed" << endl;
 };
 
@@ -47,10 +52,7 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &other)
 		for (int i = 0; i < RECIPE_SIZE; i++)
 		{
 			if (other._recipes[i] != NULL)
-			{
 				_recipes[i] = other._recipes[i];
-			}
-			i++;
 		}
 	}
 	return *this;
@@ -64,9 +66,8 @@ void MateriaSource::learnMateria(AMateria *materia)
 		{
 			_recipes[i] = materia;
 			cout << "materia of type: " << materia->getType() << " learned." << endl;
-			return;
+			break;
 		}
-		i++;
 	}
 	cout << "No empty slots in recipes." << endl;
 	return;
@@ -83,15 +84,35 @@ AMateria *MateriaSource::createMateria(std::string const &type)
 			if (!_recipes[i]->getType().compare(type))
 			{
 				newMateria = _recipes[i]->clone();
-				cout << "materia of type: " << type << " created." << endl;
-				return newMateria;
+				if (addCreatedMateria(newMateria))
+				{
+					cout << "materia of type: " << type << " created." << endl;
+					return newMateria;
+				}
+				else
+				{
+					delete newMateria;
+					cout << "Materia Source drained." << endl;
+					return NULL;
+				}
 			}
-			else
-				i++;
 		}
 		else
 			break;
 	}
 	cout << "No recipes for that type." << endl;
 	return NULL;
+};
+
+bool MateriaSource::addCreatedMateria(AMateria *materia)
+{
+	for (int i = 0; i < MAX_CAP; i++)
+	{
+		if (_createdMateria[i] == NULL)
+		{
+			_createdMateria[i] = materia;
+			return true;
+		}
+	}
+	return false;
 };
