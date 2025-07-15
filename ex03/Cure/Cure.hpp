@@ -6,7 +6,7 @@
 /*   By: uschmidt <uschmidt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:14:15 by uschmidt          #+#    #+#             */
-/*   Updated: 2025/07/15 13:08:41 by uschmidt         ###   ########.fr       */
+/*   Updated: 2025/07/15 13:16:44 by uschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define CURE_HPP
 
 #include "../AMateria/AMateria.hpp"
+#include "../ICharacter/ICharacter.hpp"
 #include "../includes/CONSTANTS.hpp"
 
 class Cure : public AMateria

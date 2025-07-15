@@ -6,7 +6,7 @@
 /*   By: uschmidt <uschmidt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:14:15 by uschmidt          #+#    #+#             */
-/*   Updated: 2025/07/15 13:02:45 by uschmidt         ###   ########.fr       */
+/*   Updated: 2025/07/15 13:20:35 by uschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #define RECIPE_SIZE 4
 #define MAX_CAP 1024
 
+#include "../Character/Character.hpp"
 #include "../IMateriaSource/IMateriaSource.hpp"
 #include "../includes/CONSTANTS.hpp"
 

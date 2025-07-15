@@ -6,7 +6,7 @@
 #    By: uschmidt <uschmidt@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/10 10:00:21 by uschmidt          #+#    #+#              #
-#    Updated: 2025/07/10 14:01:30 by uschmidt         ###   ########.fr        #
+#    Updated: 2025/07/15 13:19:47 by uschmidt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,17 +19,20 @@ CFILES		:=
 vpath %.cpp $(SRC_FOLDER)
 CFILES += main.cpp
 
-vpath %.cpp $(SRC_FOLDER)Animal
-CFILES += Animal.cpp
+vpath %.cpp $(SRC_FOLDER)Ice
+CFILES += Ice.cpp
 
-vpath %.cpp $(SRC_FOLDER)Cat
-CFILES += Cat.cpp
+vpath %.cpp $(SRC_FOLDER)Cure
+CFILES += Cure.cpp
+ 
+vpath %.cpp $(SRC_FOLDER)AMateria
+CFILES += AMateria.cpp
 
-vpath %.cpp $(SRC_FOLDER)Dog
-CFILES += Dog.cpp
+vpath %.cpp $(SRC_FOLDER)MateriaSource
+CFILES += MateriaSource.cpp
 
-vpath %.cpp $(SRC_FOLDER)Brain
-CFILES += Brain.cpp
+vpath %.cpp $(SRC_FOLDER)Character
+CFILES += Character.cpp
 
 OFILES      = $(addprefix $(OBJ_FOLDER), $(notdir $(CFILES:.cpp=.o)))
 
