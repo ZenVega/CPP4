@@ -31,3 +31,4 @@ int main()
 	delete src;
 	return 0;
 }
+// test for memory leaks

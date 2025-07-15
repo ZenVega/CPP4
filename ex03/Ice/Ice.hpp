@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uschmidt <uschmidt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/15 10:45:09 by uschmidt          #+#    #+#             */
-/*   Updated: 2025/07/15 10:45:09 by uschmidt         ###   ########.fr       */
+/*   Created: 2025/07/04 16:14:15 by uschmidt          #+#    #+#             */
+/*   Updated: 2025/07/10 14:03:44 by uschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_HPP
-#define AMATERIA_HPP
+#ifndef ICE_HPP
+#define ICE_HPP
 
+#include "../AMateria/AMateria.hpp"
 #include "../includes/CONSTANTS.hpp"
 
-// this forward declares the ICharacter class, preventing recursive inclusion
-class ICharacter;
-class AMateria
+class Ice : AMateria
 {
 protected:
-	string _type;
-	bool   _equipped;
-
 public:
-	AMateria();
-	~AMateria();
-	AMateria(std::string const &type);
-	AMateria(const AMateria &other);
-	AMateria &operator=(const AMateria &other);
+	Ice(void);
+	~Ice(void);
+	Ice(const Ice &other);
+	Ice &operator=(const Ice &other);
 
-	std::string const &getType() const;
-	virtual AMateria	 *clone() const		   = 0;
-	virtual void	   use(ICharacter &target) = 0;
+	virtual AMateria *clone() const;
+	virtual void	  use(ICharacter &target);
 };
 
 #endif

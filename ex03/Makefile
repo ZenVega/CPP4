@@ -33,7 +33,7 @@ CFILES += Brain.cpp
 
 OFILES      = $(addprefix $(OBJ_FOLDER), $(notdir $(CFILES:.cpp=.o)))
 
-CC			= c++
+CC			= clang++
 
 CFLAGS		= -g -Wall -Wextra -Werror -std=c++98 -Wshadow
 

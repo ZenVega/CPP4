@@ -1,53 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uschmidt <uschmidt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 09:08:50 by uschmidt          #+#    #+#             */
-/*   Updated: 2025/07/15 10:52:34 by uschmidt         ###   ########.fr       */
+/*   Updated: 2025/07/10 13:56:13 by uschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
+#include "Ice.hpp"
 
-AMateria::AMateria() :
-	_type("undefined")
+Ice::Ice() :
+	AMateria("ice")
 {
-	cout << "AMateria of type: " << _type << " created" << endl;
+	cout << "Ice Materia created" << endl;
 };
 
-AMateria::AMateria(string const &type) :
-	_type(type)
-{
-	cout << "AMateria of type: " << _type << " created" << endl;
-};
+Ice::Ice(const Ice &other) :
+	AMateria("ice")
 
-AMateria::AMateria(const AMateria &other)
 {
 	if (this != &other)
 	{
 		_type = other._type;
 	}
-	cout << "AMateria of name: " << _type << " created from copy constructor" << endl;
+	cout << "Ice created from copy constructor" << endl;
 };
 
-AMateria::~AMateria()
+Ice::~Ice()
 {
-	cout << "AMateria of type: " << _type << " destroyed" << endl;
+	cout << "Ice destroyed" << endl;
 };
 
-AMateria &AMateria::operator=(const AMateria &other)
+Ice &Ice::operator=(const Ice &other)
 {
 	if (this != &other)
 	{
-		_type = other._type;
+		this->_type = other._type;
 	}
 	return *this;
 };
 
-string const &AMateria::getType(void) const
+AMateria *Ice::clone(void) const
 {
-	return _type;
+	AMateria *clone = new Ice();
+	return clone;
 };
+
+void Ice::use(ICharacter &target)
+{
+	cout << "* shoots an ice bolt at " << target.getName() << " *" << endl;
+}
