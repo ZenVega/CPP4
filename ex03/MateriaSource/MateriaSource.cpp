@@ -74,6 +74,7 @@ void MateriaSource::learnMateria(AMateria *materia)
 		if (_recipes[i] == NULL)
 		{
 			_recipes[i] = materia;
+			this->addCreatedMateria(_recipes[i]);
 			cout << "materia of type: " << materia->getType() << " learned." << endl;
 			return;
 		}
