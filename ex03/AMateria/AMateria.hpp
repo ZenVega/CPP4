@@ -22,7 +22,6 @@ class AMateria
 {
 protected:
 	string		   _type;
-	bool		   _equipped;
 	MateriaSource *_source;
 
 public:
@@ -37,7 +36,6 @@ public:
 	virtual void	  use(ICharacter &target) = 0;
 	void			  equip(void);
 	void			  drop(void);
-	bool			  getEquipped(void);
 	void			  addSource(MateriaSource *source);
 };
 

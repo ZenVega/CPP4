@@ -14,19 +14,19 @@
 #include "AMateria.hpp"
 
 AMateria::AMateria() :
-	_type("undefined"), _equipped(false)
+	_type("undefined")
 {
 	cout << "AMateria of type: " << _type << " created" << endl;
 };
 
 AMateria::AMateria(string const &type) :
-	_type(type), _equipped(false)
+	_type(type)
 {
 	cout << "AMateria of type: " << _type << " created" << endl;
 };
 
 AMateria::AMateria(const AMateria &other) :
-	_type(other._type), _equipped(false)
+	_type(other._type)
 {
 	std::cout << "AMateria copied" << std::endl;
 }
@@ -40,8 +40,7 @@ AMateria &AMateria::operator=(const AMateria &other)
 {
 	if (this != &other)
 	{
-		_type	  = other._type;
-		_equipped = other._equipped;
+		_type = other._type;
 	}
 	return *this;
 };
@@ -58,17 +57,10 @@ void AMateria::addSource(MateriaSource *source)
 
 void AMateria::equip(void)
 {
-	_equipped = true;
 	_source->removeFromCreated(this);
 };
 
 void AMateria::drop(void)
 {
-	_equipped = false;
 	_source->addCreatedMateria(this);
-};
-
-bool AMateria::getEquipped(void)
-{
-	return _equipped;
 };

@@ -43,7 +43,7 @@ Character::Character(const Character &other)
 Character::~Character()
 {
 	for (int i = 0; i < INVENTORY; i++)
-		if (_inventory[i] != NULL && _inventory[i]->getEquipped())
+		if (_inventory[i] != NULL)
 		{
 			delete _inventory[i];
 			_inventory[i] = NULL;
