@@ -79,6 +79,7 @@ void MateriaSource::learnMateria(AMateria *materia)
 			return;
 		}
 	}
+	delete materia;
 	cout << "No empty slots in recipes." << endl;
 	return;
 };

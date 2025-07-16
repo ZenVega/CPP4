@@ -75,6 +75,12 @@ string const &Character::getName(void) const
 void Character::equip(AMateria *m)
 {
 	for (int i = 0; i < INVENTORY; i++)
+		if (_inventory[i] == m)
+		{
+			cout << "Materia already equipped!" << endl;
+			return;
+		}
+	for (int i = 0; i < INVENTORY; i++)
 		if (_inventory[i] == NULL)
 		{
 			_inventory[i] = m;
@@ -91,8 +97,8 @@ void Character::unequip(int idx)
 	if (_inventory[idx] != NULL)
 	{
 		_inventory[idx]->drop();
-		_inventory[idx] = NULL;
 		cout << "Materia " << _inventory[idx]->getType() << "dropped" << endl;
+		_inventory[idx] = NULL;
 	}
 	else
 	{
