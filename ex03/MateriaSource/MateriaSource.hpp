@@ -34,7 +34,8 @@ public:
 	MateriaSource &operator=(const MateriaSource &other);
 
 	void	  learnMateria(AMateria *materia);
-	AMateria *createMateria(std::string const &type);
+	AMateria *createMateria(string const &type);
 	bool	  addCreatedMateria(AMateria *materia);
+	void	  removeFromCreated(AMateria *materia);
 };
 #endif

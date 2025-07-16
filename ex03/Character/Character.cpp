@@ -14,7 +14,7 @@
 Character::Character() :
 	_name("undefined")
 {
-	for (int i = 0; i <= INVENTORY; i++)
+	for (int i = 0; i < INVENTORY; i++)
 		_inventory[i] = NULL;
 	cout << "Character of name: " << _name << " created" << endl;
 };
@@ -22,24 +22,28 @@ Character::Character() :
 Character::Character(string name) :
 	_name(name)
 {
-	for (int i = 0; i <= INVENTORY; i++)
+	for (int i = 0; i < INVENTORY; i++)
 		_inventory[i] = NULL;
 	cout << "Character of name: " << _name << " created" << endl;
 };
 
 Character::Character(const Character &other)
 {
-	if (this != &other)
+	_name = other._name;
+	for (int i = 0; i < INVENTORY; i++)
 	{
-		_name = other._name;
+		if (other._inventory[i])
+			_inventory[i] = other._inventory[i]->clone();
+		else
+			_inventory[i] = NULL;
 	}
 	cout << "Character of name: " << _name << " created from copy constructor" << endl;
-};
+}
 
 Character::~Character()
 {
-	for (int i = 0; i <= INVENTORY; i++)
-		if (_inventory[i] != NULL)
+	for (int i = 0; i < INVENTORY; i++)
+		if (_inventory[i] != NULL && _inventory[i]->getEquipped())
 		{
 			delete _inventory[i];
 			_inventory[i] = NULL;
@@ -52,6 +56,13 @@ Character &Character::operator=(const Character &other)
 	if (this != &other)
 	{
 		_name = other._name;
+		for (int i = 0; i < INVENTORY; i++)
+		{
+			if (other._inventory[i])
+				_inventory[i] = other._inventory[i]->clone();
+			else
+				_inventory[i] = NULL;
+		}
 	}
 	return *this;
 };
@@ -63,11 +74,12 @@ string const &Character::getName(void) const
 
 void Character::equip(AMateria *m)
 {
-	for (int i = 0; i <= INVENTORY; i++)
+	for (int i = 0; i < INVENTORY; i++)
 		if (_inventory[i] == NULL)
 		{
 			_inventory[i] = m;
-			cout << "Materia " << m->getType() << "equipped" << endl;
+			_inventory[i]->equip();
+			cout << "Materia " << m->getType() << " equipped" << endl;
 			// logic to assign materia
 			return;
 		}
@@ -78,8 +90,9 @@ void Character::unequip(int idx)
 {
 	if (_inventory[idx] != NULL)
 	{
+		_inventory[idx]->drop();
+		_inventory[idx] = NULL;
 		cout << "Materia " << _inventory[idx]->getType() << "dropped" << endl;
-		// logic to drop _inventory
 	}
 	else
 	{

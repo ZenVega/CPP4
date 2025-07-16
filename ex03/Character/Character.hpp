@@ -19,8 +19,6 @@
 
 #define INVENTORY 4
 
-class AMateria;
-
 class Character : public ICharacter
 {
 private:

@@ -16,6 +16,8 @@ MateriaSource::MateriaSource()
 {
 	for (int i = 0; i < RECIPE_SIZE; i++)
 		_recipes[i] = NULL;
+	for (int i = 0; i < MAX_CAP; i++)
+		_createdMateria[i] = NULL;
 	cout << "MateriaSource created" << endl;
 };
 
@@ -23,10 +25,17 @@ MateriaSource::MateriaSource(const MateriaSource &other)
 {
 	if (this != &other)
 	{
+		for (int i = 0; i < MAX_CAP; i++)
+			_createdMateria[i] = NULL;
 		for (int i = 0; i < RECIPE_SIZE; i++)
 		{
 			if (other._recipes[i] != NULL)
-				_recipes[i] = other._recipes[i];
+			{
+				_recipes[i] = other._recipes[i]->clone();
+				this->addCreatedMateria(_recipes[i]);
+			}
+			else
+				_recipes[i] = NULL;
 		}
 	}
 	cout << "MateriaSource created from copy constructor" << endl;
@@ -52,7 +61,7 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &other)
 		for (int i = 0; i < RECIPE_SIZE; i++)
 		{
 			if (other._recipes[i] != NULL)
-				_recipes[i] = other._recipes[i];
+				_recipes[i] = other._recipes[i]->clone();
 		}
 	}
 	return *this;
@@ -73,7 +82,7 @@ void MateriaSource::learnMateria(AMateria *materia)
 	return;
 };
 
-AMateria *MateriaSource::createMateria(std::string const &type)
+AMateria *MateriaSource::createMateria(string const &type)
 {
 	AMateria *newMateria;
 
@@ -81,9 +90,10 @@ AMateria *MateriaSource::createMateria(std::string const &type)
 	{
 		if (_recipes[i] != NULL)
 		{
-			if (!_recipes[i]->getType().compare(type))
+			if (_recipes[i]->getType() == type)
 			{
 				newMateria = _recipes[i]->clone();
+				newMateria->addSource(this);
 				if (addCreatedMateria(newMateria))
 				{
 					cout << "materia of type: " << type << " created." << endl;
@@ -97,8 +107,6 @@ AMateria *MateriaSource::createMateria(std::string const &type)
 				}
 			}
 		}
-		else
-			break;
 	}
 	cout << "No recipes for that type." << endl;
 	return NULL;
@@ -115,4 +123,17 @@ bool MateriaSource::addCreatedMateria(AMateria *materia)
 		}
 	}
 	return false;
+};
+
+void MateriaSource::removeFromCreated(AMateria *materia)
+{
+	for (int i = 0; i < MAX_CAP; i++)
+	{
+		if (_createdMateria[i] == materia)
+		{
+			_createdMateria[i] = NULL;
+			return;
+		}
+	}
+	return;
 };

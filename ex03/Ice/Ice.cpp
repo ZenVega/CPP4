@@ -38,6 +38,12 @@ Ice &Ice::operator=(const Ice &other)
 	return *this;
 };
 
+// AMateria *Ice::clone(void) const
+// {
+// 	Ice newMat = Ice(*this);
+// 	return (new Ice(newMat));
+// };
+
 AMateria *Ice::clone(void) const
 {
 	return (new Ice(*this));

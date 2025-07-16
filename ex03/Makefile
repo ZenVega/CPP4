@@ -36,9 +36,9 @@ CFILES += Character.cpp
 
 OFILES      = $(addprefix $(OBJ_FOLDER), $(notdir $(CFILES:.cpp=.o)))
 
-CC			= clang++
+CC			= g++
 
-CFLAGS		= -g -Wall -Wextra -Werror -std=c++98 -Wshadow
+CFLAGS		= -g -O0 -Wall -Wextra -Werror -std=c++98 -Wshadow
 
 all: $(NAME) 
 

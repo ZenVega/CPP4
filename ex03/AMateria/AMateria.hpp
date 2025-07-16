@@ -17,21 +17,28 @@
 
 // forward declaration
 class ICharacter;
+class MateriaSource;
 class AMateria
 {
 protected:
-	string _type;
+	string		   _type;
+	bool		   _equipped;
+	MateriaSource *_source;
 
 public:
 	AMateria();
-	virtual ~AMateria(){};
-	AMateria(std::string const &type);
+	virtual ~AMateria();
+	AMateria(string const &type);
 	AMateria(const AMateria &other);
 	AMateria &operator=(const AMateria &other);
 
-	std::string const &getType() const;
-	virtual AMateria	 *clone() const		   = 0;
-	virtual void	   use(ICharacter &target) = 0;
+	string const	 &getType() const;
+	virtual AMateria *clone() const			  = 0;
+	virtual void	  use(ICharacter &target) = 0;
+	void			  equip(void);
+	void			  drop(void);
+	bool			  getEquipped(void);
+	void			  addSource(MateriaSource *source);
 };
 
 #endif
