@@ -16,6 +16,11 @@
 #include "../AMateria/AMateria.hpp"
 #include "../includes/CONSTANTS.hpp"
 
+// An Interface is a design pattern, that has:
+// -only pure virtual functions
+// -no member variables
+// -no implementation at al aka. co cpp file
+
 class IMateriaSource
 {
 public:

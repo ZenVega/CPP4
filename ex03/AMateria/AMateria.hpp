@@ -31,6 +31,9 @@ public:
 	AMateria(const AMateria &other);
 	AMateria &operator=(const AMateria &other);
 
+	// returning a 'const &' results in better performance.
+	// should only be used when returning a member variable.
+	// a local variable might not outlive the function execution
 	string const	 &getType() const;
 	virtual AMateria *clone() const			  = 0;
 	virtual void	  use(ICharacter &target) = 0;

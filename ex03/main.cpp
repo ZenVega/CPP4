@@ -31,10 +31,12 @@ int main()
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
+	ICharacter *me2 = me;
 	me->unequip(3);
 	ICharacter *bob = new Character("bob");
 	me->use(0, *bob);
 	me->use(1, *bob);
+	me2->use(3, *bob);
 	delete bob;
 	delete me;
 	delete src;

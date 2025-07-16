@@ -58,6 +58,8 @@ Character &Character::operator=(const Character &other)
 		_name = other._name;
 		for (int i = 0; i < INVENTORY; i++)
 		{
+			if (_inventory[i])
+				delete _inventory[i];
 			if (other._inventory[i])
 				_inventory[i] = other._inventory[i]->clone();
 			else
