@@ -14,23 +14,26 @@
 
 int main()
 {
-	const Animal *meta			= new Animal();
-	const Animal *j				= new Dog();
-	const Animal *i				= new Cat();
-	Animal		 *catDog		= new Cat("Dog");
-	Animal		  dynamicAnimal = *catDog;
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound();
-	j->makeSound();
-	meta->makeSound();
-	catDog->makeSound();
-	dynamicAnimal.makeSound();
-	dynamicAnimal.setType("undefined");
-	dynamicAnimal.makeSound();
-	delete (meta);
-	delete (j);
-	delete (i);
-	delete (catDog);
+	const Animal *animals[3];
+	animals[0] = new Animal();
+	animals[1] = new Dog();
+	animals[2] = new Cat();
+	const WrongAnimal *wrongAnimals[2];
+	wrongAnimals[0] = new WrongAnimal();
+	wrongAnimals[1] = new WrongCat();
+	std::cout << "Right animals___________________________" << std::endl;
+	for (int i = 0; i < 3; i++)
+	{
+		std::cout << animals[i]->getType() << std::endl;
+		animals[i]->makeSound();
+		delete animals[i];
+	}
+	std::cout << "Wrong animals___________________________" << std::endl;
+	for (int i = 0; i < 2; i++)
+	{
+		std::cout << wrongAnimals[i]->getType() << std::endl;
+		wrongAnimals[i]->makeSound();
+		delete wrongAnimals[i];
+	}
 	return 0;
 }

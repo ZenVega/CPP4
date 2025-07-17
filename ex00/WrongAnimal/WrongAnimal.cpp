@@ -9,47 +9,48 @@
 /*   Updated: 2025/07/10 12:15:06 by uschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "Animal.hpp"
 
-Animal::Animal() :
-	_type("undefined animal")
+#include "WrongAnimal.hpp"
+
+WrongAnimal::WrongAnimal() :
+	_type("undefined wrongAnimal")
 {
-	cout << "Animal of type: " << _type << " created" << endl;
+	cout << "WrongAnimal of type: " << _type << " created" << endl;
 };
 
-Animal::Animal(string type) :
+WrongAnimal::WrongAnimal(string type) :
 	_type(type)
 {
-	cout << "Animal of type: " << _type << " created" << endl;
+	cout << "WrongAnimal of type: " << _type << " created" << endl;
 };
 
-void Animal::setType(string type)
+void WrongAnimal::setType(string type)
 {
-	cout << "Animal of type: " << _type << " set to type: ";
+	cout << "WrongAnimal of type: " << _type << " set to type: ";
 	_type = type;
 	cout << _type << endl;
 }
 
-string Animal::getType(void) const
+string WrongAnimal::getType(void) const
 {
 	return _type;
 }
 
-Animal::Animal(const Animal &other)
+WrongAnimal::WrongAnimal(const WrongAnimal &other)
 {
 	if (this != &other)
 	{
 		_type = other._type;
 	}
-	cout << "Animal of type: " << _type << " created from copy constructor" << endl;
+	cout << "WrongAnimal of type: " << _type << " created from copy constructor" << endl;
 };
 
-Animal::~Animal()
+WrongAnimal::~WrongAnimal()
 {
-	cout << "Animal of type: " << _type << " destroyed" << endl;
+	cout << "WrongAnimal of type: " << _type << " destroyed" << endl;
 };
 
-Animal &Animal::operator=(const Animal &other)
+WrongAnimal &WrongAnimal::operator=(const WrongAnimal &other)
 {
 	if (this != &other)
 	{
@@ -58,7 +59,7 @@ Animal &Animal::operator=(const Animal &other)
 	return *this;
 };
 
-void Animal::makeSound(void) const
+void WrongAnimal::makeSound(void) const
 {
-	cout << "unidentified Noises" << endl;
+	cout << "absolutely wrong noises noises" << endl;
 }

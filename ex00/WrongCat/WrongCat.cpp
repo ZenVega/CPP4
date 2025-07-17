@@ -1,51 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uschmidt <uschmidt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 09:08:50 by uschmidt          #+#    #+#             */
-/*   Updated: 2025/07/10 12:18:53 by uschmidt         ###   ########.fr       */
+/*   Updated: 2025/07/10 12:18:04 by uschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "Dog.hpp"
 
-Dog::Dog() :
-	Animal("Dog")
+#include "WrongCat.hpp"
+
+WrongCat::WrongCat() :
+	WrongAnimal("WrongCat")
 {
-	cout << "Dog of type: " << _type << " created" << endl;
+	cout << "WrongCat of type: " << _type << " created" << endl;
 };
 
-Dog::Dog(string type) :
-	Animal(type)
+WrongCat::WrongCat(string type) :
+	WrongAnimal(type)
 {
-	cout << "Dog of type: " << _type << " created" << endl;
+	cout << "WrongCat of type: " << _type << " created" << endl;
 };
 
-void Dog::setType(string type)
+void WrongCat::setType(string type)
 {
-	cout << "Dog of type: " << _type << " set to type: ";
+	cout << "WrongCat of type: " << _type << " set to type: ";
 	_type = type;
 	cout << _type << endl;
 }
 
-Dog::Dog(const Dog &other) :
-	Animal(other._type)
+WrongCat::WrongCat(const WrongCat &other) :
+	WrongAnimal(other._type)
+
 {
 	if (this != &other)
 	{
 		_type = other._type;
 	}
-	cout << "Dog of type: " << _type << " created from copy constructor" << endl;
+	cout << "WrongCat of type: " << _type << " created from copy constructor" << endl;
 };
 
-Dog::~Dog()
+WrongCat::~WrongCat()
 {
-	cout << "Dog of type: " << _type << " destroyed" << endl;
+	cout << "WrongCat of type: " << _type << " destroyed" << endl;
 };
 
-Dog &Dog::operator=(const Dog &other)
+WrongCat &WrongCat::operator=(const WrongCat &other)
 {
 	if (this != &other)
 	{
@@ -54,7 +56,7 @@ Dog &Dog::operator=(const Dog &other)
 	return *this;
 };
 
-void Dog::makeSound(void) const
+void WrongCat::makeSound(void) const
 {
-	cout << "barf barf..." << endl;
+	cout << "WrongMew WrongMew..." << endl;
 }

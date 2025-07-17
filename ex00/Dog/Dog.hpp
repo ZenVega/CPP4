@@ -27,6 +27,7 @@ public:
 
 	Dog &operator=(const Dog &other);
 	void setType(string type);
+	void makeSound(void) const;
 };
 
 #endif

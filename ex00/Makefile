@@ -25,6 +25,12 @@ CFILES += Animal.cpp
 vpath %.cpp $(SRC_FOLDER)Cat
 CFILES += Cat.cpp
 
+vpath %.cpp $(SRC_FOLDER)WrongAnimal
+CFILES += WrongAnimal.cpp
+
+vpath %.cpp $(SRC_FOLDER)WrongCat
+CFILES += WrongCat.cpp
+
 vpath %.cpp $(SRC_FOLDER)Dog
 CFILES += Dog.cpp
 
@@ -34,10 +40,16 @@ CC			= c++
 
 CFLAGS		= -g -Wall -Wextra -Werror -std=c++98 -Wshadow
 
+VALGRIND		= valgrind --leak-check=full --track-origins=yes ./$(NAME)
+
 all: $(NAME) 
 
 $(NAME): $(OFILES)
 	$(CC) $(CFLAGS) -o $(SRC_FOLDER)$(NAME) $(OFILES)
+
+grind: $(OFILES)
+	$(CC) $(CFLAGS) -o $(SRC_FOLDER)$(NAME) $(OFILES)
+	$(VALGRIND) 
 
 $(OBJ_FOLDER)%.o: %.cpp $(DEPS)
 	mkdir -p $(OBJ_FOLDER)

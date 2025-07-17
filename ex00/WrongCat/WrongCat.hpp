@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.hpp                                           :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uschmidt <uschmidt@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/06 16:28:22 by uschmidt          #+#    #+#             */
-/*   Updated: 2025/07/10 11:43:52 by uschmidt         ###   ########.fr       */
+/*   Created: 2025/07/04 16:14:15 by uschmidt          #+#    #+#             */
+/*   Updated: 2025/07/10 12:03:28 by uschmidt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_HPP
-#define MAIN_HPP
+#ifndef WRONGCAT_HPP
+#define WRONGCAT_HPP
 
-#include "../Animal/Animal.hpp"
-#include "../Cat/Cat.hpp"
-#include "../Dog/Dog.hpp"
 #include "../WrongAnimal/WrongAnimal.hpp"
-#include "../WrongCat/WrongCat.hpp"
-#include "CONSTANTS.hpp"
+#include "../includes/CONSTANTS.hpp"
+
+class WrongCat : public virtual WrongAnimal
+{
+protected:
+public:
+	WrongCat();
+	WrongCat(string name);
+	WrongCat(const WrongCat &other);
+	~WrongCat();
+
+	WrongCat &operator=(const WrongCat &other);
+	void	  setType(string type);
+	void	  makeSound(void) const;
+};
 
 #endif

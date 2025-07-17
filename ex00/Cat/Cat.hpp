@@ -27,6 +27,7 @@ public:
 
 	Cat &operator=(const Cat &other);
 	void setType(string type);
+	void makeSound(void) const;
 };
 
 #endif
