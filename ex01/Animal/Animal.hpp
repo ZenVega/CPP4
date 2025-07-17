@@ -20,19 +20,19 @@ class Animal
 {
 protected:
 	string _type;
-	Brain *_ideas;
 
 public:
 	Animal();
-	Animal(string name);
+	Animal(string type);
 	Animal(const Animal &other);
 	virtual ~Animal();
 
-	void setType(string type);
-	// const in this example is also necessary to make in callable on a const Animal
+	void		 setType(string type);
 	string		 getType(void) const;
 	virtual void makeSound(void) const;
-	Animal		&operator=(const Animal &other);
+	Animal	   &operator=(const Animal &other);
+	virtual void think(string idea);
+	virtual void thinkLoud(int idx) const;
 };
 
 #endif

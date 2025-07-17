@@ -22,7 +22,7 @@ protected:
 
 public:
 	WrongAnimal();
-	WrongAnimal(string name);
+	WrongAnimal(string type);
 	WrongAnimal(const WrongAnimal &other);
 	virtual ~WrongAnimal();
 

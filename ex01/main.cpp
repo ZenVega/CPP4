@@ -11,20 +11,34 @@
 /* ************************************************************************** */
 
 #include "includes/main.hpp"
+#define NUM_ANIMALS 5
 
 int main()
 {
-	Animal *animals[10];
-	for (int i = 0; i < 10; i++)
+	Animal *animals[NUM_ANIMALS];
+	for (int i = 0; i < NUM_ANIMALS; i++)
 	{
 		if (i % 2)
-			animals[i] = new Cat("Cat");
+			animals[i] = new Cat();
 		else
-			animals[i] = new Dog("Dog");
+			animals[i] = new Dog();
 	}
-	for (int i = 0; i < 10; i++)
+
+	cout << "thinking_____________" << endl;
+	for (int i = 0; i < NUM_ANIMALS; i++)
+		animals[i]->think("This is fine.");
+
+	cout << "cloning_____________" << endl;
+	cout << "This will result in the creation of an Animal Object. No Cat methods will be inherited" << endl;
+	cout << "To create the inherited class, we need to clone the object or call the Derived constructor" << endl;
+	Animal tmp = *animals[NUM_ANIMALS - 2];
+	tmp.thinkLoud(0);
+	tmp.makeSound();
+
+	for (int i = 0; i < NUM_ANIMALS; i++)
 	{
 		animals[i]->makeSound();
+		animals[i]->thinkLoud(0);
 		delete animals[i];
 	}
 	return 0;

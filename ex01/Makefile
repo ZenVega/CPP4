@@ -37,10 +37,16 @@ CC			= c++
 
 CFLAGS		= -g -Wall -Wextra -Werror -std=c++98 -Wshadow
 
+VALGRIND		= valgrind --leak-check=full --track-origins=yes ./$(NAME)
+
 all: $(NAME) 
 
 $(NAME): $(OFILES)
 	$(CC) $(CFLAGS) -o $(SRC_FOLDER)$(NAME) $(OFILES)
+
+grind: $(OFILES)
+	$(CC) $(CFLAGS) -o $(SRC_FOLDER)$(NAME) $(OFILES)
+	$(VALGRIND) 
 
 $(OBJ_FOLDER)%.o: %.cpp $(DEPS)
 	mkdir -p $(OBJ_FOLDER)

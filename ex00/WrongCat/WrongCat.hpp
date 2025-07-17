@@ -21,7 +21,6 @@ class WrongCat : public virtual WrongAnimal
 protected:
 public:
 	WrongCat();
-	WrongCat(string name);
 	WrongCat(const WrongCat &other);
 	~WrongCat();
 

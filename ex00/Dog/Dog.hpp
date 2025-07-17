@@ -21,7 +21,6 @@ class Dog : public virtual Animal
 protected:
 public:
 	Dog();
-	Dog(string name);
 	Dog(const Dog &other);
 	~Dog();
 

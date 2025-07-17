@@ -22,7 +22,7 @@ protected:
 
 public:
 	Animal();
-	Animal(string name);
+	Animal(string type);
 	Animal(const Animal &other);
 	virtual ~Animal();
 
@@ -30,7 +30,7 @@ public:
 	// const in this example is also necessary to make in callable on a const Animal
 	string		 getType(void) const;
 	virtual void makeSound(void) const;
-	Animal		&operator=(const Animal &other);
+	Animal	   &operator=(const Animal &other);
 };
 
 #endif

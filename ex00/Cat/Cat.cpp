@@ -18,12 +18,6 @@ Cat::Cat() :
 	cout << "Cat of type: " << _type << " created" << endl;
 };
 
-Cat::Cat(string type) :
-	Animal(type)
-{
-	cout << "Cat of type: " << _type << " created" << endl;
-};
-
 void Cat::setType(string type)
 {
 	cout << "Cat of type: " << _type << " set to type: ";

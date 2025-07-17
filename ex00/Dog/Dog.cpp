@@ -17,12 +17,6 @@ Dog::Dog() :
 	cout << "Dog of type: " << _type << " created" << endl;
 };
 
-Dog::Dog(string type) :
-	Animal(type)
-{
-	cout << "Dog of type: " << _type << " created" << endl;
-};
-
 void Dog::setType(string type)
 {
 	cout << "Dog of type: " << _type << " set to type: ";

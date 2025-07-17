@@ -18,12 +18,6 @@ WrongCat::WrongCat() :
 	cout << "WrongCat of type: " << _type << " created" << endl;
 };
 
-WrongCat::WrongCat(string type) :
-	WrongAnimal(type)
-{
-	cout << "WrongCat of type: " << _type << " created" << endl;
-};
-
 void WrongCat::setType(string type)
 {
 	cout << "WrongCat of type: " << _type << " set to type: ";

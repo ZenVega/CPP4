@@ -18,15 +18,19 @@
 
 class Cat : public virtual Animal
 {
-protected:
+private:
+	Brain *_brain;
+
 public:
 	Cat();
-	Cat(string name);
 	Cat(const Cat &other);
 	~Cat();
 
 	Cat &operator=(const Cat &other);
 	void setType(string type);
+	void makeSound(void) const;
+	void think(string idea);
+	void thinkLoud(int idx) const;
 };
 
 #endif

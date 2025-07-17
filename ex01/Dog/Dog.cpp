@@ -12,13 +12,7 @@
 #include "Dog.hpp"
 
 Dog::Dog() :
-	Animal("Dog")
-{
-	cout << "Dog of type: " << _type << " created" << endl;
-};
-
-Dog::Dog(string type) :
-	Animal(type)
+	Animal("Dog"), _brain(new Brain())
 {
 	cout << "Dog of type: " << _type << " created" << endl;
 };
@@ -31,7 +25,7 @@ void Dog::setType(string type)
 }
 
 Dog::Dog(const Dog &other) :
-	Animal(other._type)
+	Animal(other._type), _brain(new Brain())
 {
 	if (this != &other)
 	{
@@ -42,14 +36,31 @@ Dog::Dog(const Dog &other) :
 
 Dog::~Dog()
 {
+	delete _brain;
 	cout << "Dog of type: " << _type << " destroyed" << endl;
 };
 
 Dog &Dog::operator=(const Dog &other)
 {
+	cout << "Assignment operator" << endl;
 	if (this != &other)
 	{
 		this->_type = other._type;
 	}
 	return *this;
+};
+
+void Dog::makeSound(void) const
+{
+	cout << "barf barf..." << endl;
+}
+
+void Dog::think(string idea)
+{
+	_brain->addIdea(idea);
+};
+
+void Dog::thinkLoud(int idx) const
+{
+	cout << _brain->returnIdea(idx) << endl;
 };

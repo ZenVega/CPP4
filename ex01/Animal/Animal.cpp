@@ -12,13 +12,13 @@
 #include "Animal.hpp"
 
 Animal::Animal() :
-	_type("undefined animal"), _ideas(new Brain())
+	_type("undefined animal")
 {
 	cout << "Animal of type: " << _type << " created" << endl;
 };
 
 Animal::Animal(string type) :
-	_type(type), _ideas(new Brain())
+	_type(type)
 {
 	cout << "Animal of type: " << _type << " created" << endl;
 };
@@ -39,26 +39,22 @@ Animal::Animal(const Animal &other)
 {
 	if (this != &other)
 	{
-		_type  = other._type;
-		_ideas = other._ideas;
+		_type = other._type;
 	}
 	cout << "Animal of type: " << _type << " created from copy constructor" << endl;
 };
 
 Animal::~Animal()
 {
-	delete (_ideas);
 	cout << "Animals of type: " << _type << " brain dead" << endl;
 	cout << "Animal of type: " << _type << " destroyed" << endl;
 };
 
 Animal &Animal::operator=(const Animal &other)
 {
+	cout << "Animal overload assignment" << endl;
 	if (this != &other)
-	{
-		this->_type	 = other._type;
-		this->_ideas = other._ideas;
-	}
+		_type = other._type;
 	return *this;
 };
 
@@ -70,4 +66,14 @@ void Animal::makeSound(void) const
 		cout << "bark bark" << endl;
 	else
 		cout << "unidentified Noises" << endl;
-}
+};
+
+void Animal::think(string idea)
+{
+	cout << "I'm still brainless, no place to store the idea: " << idea << endl;
+};
+
+void Animal::thinkLoud(int idx) const
+{
+	cout << "I'm brainless, no place to look for index: " << idx << endl;
+};

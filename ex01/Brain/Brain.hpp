@@ -14,11 +14,11 @@
 #define BRAIN_HPP
 
 #include "../includes/CONSTANTS.hpp"
-
+#define MAX_IDEAS 100
 class Brain
 {
 private:
-	string _ideas[100];
+	string _ideas[MAX_IDEAS];
 
 public:
 	Brain();
@@ -26,6 +26,8 @@ public:
 	~Brain();
 
 	Brain &operator=(const Brain &other);
+	void   addIdea(string idea);
+	string returnIdea(int idx);
 };
 
 #endif
