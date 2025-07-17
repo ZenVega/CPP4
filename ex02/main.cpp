@@ -12,19 +12,27 @@
 
 #include "includes/main.hpp"
 
+#define NUM_ANIMALS 5
+
 int main()
 {
-	Animal *animals[10];
-	for (int i = 0; i < 10; i++)
+	Animal *animals[NUM_ANIMALS];
+	for (int i = 0; i < NUM_ANIMALS; i++)
 	{
 		if (i % 2)
-			animals[i] = new Cat("Cat");
+			animals[i] = new Cat();
 		else
-			animals[i] = new Dog("Dog");
+			animals[i] = new Dog();
 	}
-	for (int i = 0; i < 10; i++)
+
+	cout << "thinking_____________" << endl;
+	for (int i = 0; i < NUM_ANIMALS; i++)
+		animals[i]->think("This is fine.");
+
+	for (int i = 0; i < NUM_ANIMALS; i++)
 	{
 		animals[i]->makeSound();
+		animals[i]->thinkLoud(0);
 		delete animals[i];
 	}
 	return 0;

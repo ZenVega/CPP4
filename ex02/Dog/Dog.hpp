@@ -19,14 +19,18 @@
 class Dog : public virtual Animal
 {
 protected:
+	Brain *_brain;
+
 public:
 	Dog();
-	Dog(string name);
 	Dog(const Dog &other);
 	~Dog();
 
 	Dog &operator=(const Dog &other);
 	void setType(string type);
+	void makeSound(void) const;
+	void think(string idea);
+	void thinkLoud(int idx) const;
 };
 
 #endif
